@@ -6,11 +6,13 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="Diplom_3-develop3" />
         <module name="scooter-test" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="Diplom_3" target="11" />
+      <module name="Diplom_3-develop3" target="11" />
     </bytecodeTargetLevel>
   </component>
 </project>
