@@ -14,15 +14,14 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <junit-params.version>1.0.4</junit-params.version>
         <aspectj.version>1.9.7</aspectj.version>
-        <!-- версия Allure -->
         <allure.version>2.17.3</allure.version>
     </properties>
 
     <dependencies>
         <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.13.2</version>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
+            <version>5.8.1</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -42,11 +41,10 @@
         </dependency>
         <dependency>
             <groupId>io.qameta.allure</groupId>
-            <artifactId>allure-junit4</artifactId>
+            <artifactId>allure-junit5</artifactId>
             <version>${allure.version}</version>
         </dependency>
         <dependency>
-            <!-- модуль взаимодействия Allure и service.RestAssured -->
             <groupId>io.qameta.allure</groupId>
             <artifactId>allure-rest-assured</artifactId>
             <version>${allure.version}</version>
@@ -66,7 +64,6 @@
     <build>
         <plugins>
             <plugin>
-                <!-- настройка плагина maven-surefire-plugin -->
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>2.22.2</version>
@@ -79,12 +76,11 @@
                     <properties>
                         <property>
                             <name>listener</name>
-                            <value>io.qameta.allure.junit4.AllureJunit4</value>
+                            <value>io.qameta.allure.junit5.AllureJupiter</value>
                         </property>
                     </properties>
                     <systemProperties>
                         <property>
-                            <!-- папка, в которую будут генерироваться отчёты Allure -->
                             <name>allure.results.directory</name>
                             <value>${project.build.directory}/allure-results</value>
                         </property>
@@ -98,9 +94,9 @@
                     </dependency>
                 </dependencies>
             </plugin>
-            <!-- подключение плагина allure-maven для вызова функций Allure с помощью Maven -->
             <plugin>
                 <groupId>io.qameta.allure</groupId>
+
                 <artifactId>allure-maven</artifactId>
                 <version>2.10.0</version>
                 <configuration>

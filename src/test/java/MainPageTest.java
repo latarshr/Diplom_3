@@ -1,27 +1,56 @@
-import io.qameta.allure.junit4.DisplayName;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
+import pageObjects.MainPage;
+import io.qameta.allure.AllureId;
 
-import static org.junit.Assert.assertTrue;
+import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Selenide.page;
 
-public class MainPageTest extends BaseTest{
-    @Test
-    @DisplayName("Проверка возможности выбора булки")
-    public void checkBunTabActive() throws Exception {
-        boolean result = mainPage.isActiveBunTab();
-        assertTrue(result);
+public class MainPageTest {
+
+    @BeforeAll
+    public static void openPage() {
+        open(MainPage.URL);
     }
-
     @Test
-    @DisplayName("Проверка возможности выбора соуса")
-    public void checkSauceTabActive() throws Exception {
-        boolean result = mainPage.isActiveSauceTab();
-        assertTrue(result);
+    @AllureId("5")
+    void shouldSelectSauce() {
+        MainPage mainPage = page(MainPage.class);
+        mainPage.sauceTab.click();
+        //TODO: select sauce
     }
-
     @Test
-    @DisplayName("Проверка возможности выбора начинки")
-    public void checkFillingTabActive() throws Exception {
-        boolean result = mainPage.isActiveFillingTab();
-        assertTrue(result);
+    @AllureId("6")
+    void shouldCheckActiveSauceTab() throws Exception {
+        MainPage mainPage = page(MainPage.class);
+        mainPage.isActiveSauceTab();
+    }
+    @Test
+    @AllureId("7")
+    void shouldSelectFilling() {
+        MainPage mainPage = page(MainPage.class);
+        mainPage.fillingTab.click();
+        //TODO: select filling
+    }
+    @Test
+    @AllureId("8")
+    void shouldCheckActiveFillingTab() throws Exception {
+        MainPage mainPage = page(MainPage.class);
+        mainPage.isActiveFillingTab();
+    }
+    @Test
+    @AllureId("9")
+    void shouldSelectBun() {
+        MainPage mainPage = page(MainPage.class);
+        open(MainPage.URL);
+        mainPage.fillingTab.click();
+        mainPage.bunTab.click();
+        //TODO: select bun
+    }
+    @Test
+    @AllureId("10")
+    void shouldCheckActiveBunTab() throws Exception {
+        MainPage mainPage = page(MainPage.class);
+        mainPage.isActiveBunTab();
     }
 }

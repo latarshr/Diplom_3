@@ -1,14 +1,15 @@
 import dto.userDto.UserDto;
-import io.qameta.allure.junit4.DisplayName;
+import org.junit.jupiter.api.DisplayName;
 import org.apache.commons.lang3.RandomStringUtils;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.AfterEach;
+import org.junit. jupiter.api. BeforeEach;
+import org.junit.jupiter.api.Test;
 import pageObjects.AuthPage;
 import pageObjects.MainPage;
 import pageObjects.RegistrationPage;
 import service.UserService;
 import utils.UserDataGeneration;
+import io.qameta.allure.AllureId;
 
 import static com.codeborne.selenide.Selenide.open;
 import static org.apache.http.HttpStatus.*;
@@ -22,7 +23,7 @@ public class RegistrationTest extends BaseTest {
     AuthPage authPage = open(AuthPage.URL, AuthPage.class);
     RegistrationPage regPage = open(RegistrationPage.URL, RegistrationPage.class);
 
-    @Before
+    @BeforeEach
     public void setUp() {
         user = UserDataGeneration.generateNewUser();
 
@@ -30,7 +31,7 @@ public class RegistrationTest extends BaseTest {
         authPage.clickRegLinkBtn();
     }
 
-    @After
+    @AfterEach
     public void teardown() {
         if (accessToken == null)
             return;
@@ -46,6 +47,7 @@ public class RegistrationTest extends BaseTest {
     }
 
     @Test
+    @AllureId("15")
     @DisplayName("Проверка успешной регистрации")
     public void checkSuccessRegistration() {
         regPage.fillInputName(user.getName());
@@ -60,6 +62,7 @@ public class RegistrationTest extends BaseTest {
     }
 
     @Test
+    @AllureId("16")
     @DisplayName("Проверка регистрации с невалидным паролем")
     public void checkRegistrationFailed() {
         user.setPassword(RandomStringUtils.randomAlphanumeric(5));
@@ -75,6 +78,7 @@ public class RegistrationTest extends BaseTest {
     }
 
     @Test
+    @AllureId("17")
     @DisplayName("Проверка невозможности регистрации с пустым паролем")
     public void checkPasswordCanNotBeNull() {
         user.setPassword("");

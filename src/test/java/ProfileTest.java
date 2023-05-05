@@ -1,14 +1,15 @@
 import dto.userDto.UserDto;
-import io.qameta.allure.junit4.DisplayName;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.AfterEach;
+import org.junit. jupiter.api. BeforeEach;
+import org.junit.jupiter.api.Test;
 import pageObjects.AuthPage;
 import pageObjects.HeaderPage;
 import pageObjects.MainPage;
 import pageObjects.ProfilePage;
 import service.UserService;
 import utils.UserDataGeneration;
+import io.qameta.allure.AllureId;
 
 import static com.codeborne.selenide.Selenide.open;
 import static org.apache.http.HttpStatus.SC_ACCEPTED;
@@ -25,7 +26,7 @@ public class ProfileTest extends BaseTest{
     HeaderPage headerPage = open(HeaderPage.URL, HeaderPage.class);
     ProfilePage profilePage = open(ProfilePage.URL, ProfilePage.class);
 
-    @Before
+    @BeforeEach
     public void setUp() throws Exception {
         UserDto newUser = UserDataGeneration.generateNewUser();
         user = new UserDto();
@@ -43,7 +44,7 @@ public class ProfileTest extends BaseTest{
         authPage.clickAuthBtn();
     }
 
-    @After
+    @AfterEach
     public void teardown() {
         if (accessToken == null)
             return;
@@ -55,6 +56,7 @@ public class ProfileTest extends BaseTest{
     }
 
     @Test
+    @AllureId("11")
     @DisplayName("Проверка входа в аккаунт")
     public void checkEnterProfile() {
         headerPage.clickProfileBtn();
@@ -62,6 +64,7 @@ public class ProfileTest extends BaseTest{
     }
 
     @Test
+    @AllureId("12")
     @DisplayName("Проверка перехода из ЛК на страницу Конструктор")
     public void checkEnterConstructorFromProfile() {
         headerPage.clickProfileBtn();
@@ -71,6 +74,7 @@ public class ProfileTest extends BaseTest{
     }
 
     @Test
+    @AllureId("13")
     @DisplayName("Проверка перехода из ЛК по клику на лого")
     public void checkEnterConstructorFromProfileClickLogo() {
         headerPage.clickProfileBtn();
@@ -80,6 +84,7 @@ public class ProfileTest extends BaseTest{
     }
 
     @Test
+    @AllureId("14")
     @DisplayName("Проверка выхода из ЛК")
     public void checkLogOut() {
         headerPage.clickProfileBtn();

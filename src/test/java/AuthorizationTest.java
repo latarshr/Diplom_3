@@ -1,8 +1,8 @@
 import dto.userDto.UserDto;
-import io.qameta.allure.junit4.DisplayName;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.AfterEach;
+import org.junit. jupiter.api. BeforeEach;
+import org.junit.jupiter.api.Test;
 import pageObjects.*;
 import service.UserService;
 import utils.UserDataGeneration;
@@ -12,6 +12,7 @@ import static org.apache.http.HttpStatus.SC_ACCEPTED;
 import static org.apache.http.HttpStatus.SC_OK;
 import static org.hamcrest.Matchers.equalTo;
 import static org.junit.Assert.assertTrue;
+import io.qameta.allure.AllureId;
 
 public class AuthorizationTest extends BaseTest {
     UserDto user;
@@ -21,7 +22,7 @@ public class AuthorizationTest extends BaseTest {
     AuthPage authPage = open(AuthPage.URL, AuthPage.class);
     HeaderPage headerPage = open(HeaderPage.URL, HeaderPage.class);
 
-    @Before
+    @BeforeEach
     public void setUp() {
         UserDto newUser = UserDataGeneration.generateNewUser();
         user = new UserDto();
@@ -34,7 +35,7 @@ public class AuthorizationTest extends BaseTest {
                 .extract().path("accessToken");
     }
 
-    @After
+    @AfterEach
     public void teardown() {
         if (accessToken == null)
             return;
@@ -46,6 +47,7 @@ public class AuthorizationTest extends BaseTest {
     }
 
     @Test
+    @AllureId("1")
     @DisplayName("Проверка входа с главной страницы")
     public void checkEnterFromMainPage() throws Exception {
         mainPage.clickEnterBtn();
@@ -56,6 +58,7 @@ public class AuthorizationTest extends BaseTest {
     }
 
     @Test
+    @AllureId("2")
     @DisplayName("Проверка входа с страницы личного кабинета")
     public void checkEnterFromProfile() throws Exception {
         headerPage.clickProfileBtn();
@@ -66,6 +69,7 @@ public class AuthorizationTest extends BaseTest {
     }
 
     @Test
+    @AllureId("3")
     @DisplayName("Проверка входа со страницы регистрации")
     public void checkEnterFromRegPage() throws Exception {
         RegistrationPage regPage = open(RegistrationPage.URL, RegistrationPage.class);
@@ -77,6 +81,7 @@ public class AuthorizationTest extends BaseTest {
     }
 
     @Test
+    @AllureId("4")
     @DisplayName("Проверка входа со страницы Восстановление пароля")
     public void checkEnterFromPasswordRefreshPage() throws Exception {
         PasswordRefreshPage passwordRefreshPage = open(PasswordRefreshPage.URL, PasswordRefreshPage.class);
