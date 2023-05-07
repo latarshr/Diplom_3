@@ -1,56 +1,63 @@
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import pageObjects.MainPage;
 import io.qameta.allure.AllureId;
 
 import static com.codeborne.selenide.Selenide.open;
 import static com.codeborne.selenide.Selenide.page;
 
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class MainPageTest {
+
+    private static MainPage mainPage;
 
     @BeforeAll
     public static void openPage() {
         open(MainPage.URL);
+        mainPage = page(MainPage.class);
     }
+
     @Test
+    @Order(1)
     @AllureId("5")
     void shouldSelectSauce() {
-        MainPage mainPage = page(MainPage.class);
         mainPage.sauceTab.click();
         //TODO: select sauce
     }
+
     @Test
+    @Order(2)
     @AllureId("6")
     void shouldCheckActiveSauceTab() throws Exception {
-        MainPage mainPage = page(MainPage.class);
         mainPage.isActiveSauceTab();
     }
+
     @Test
+    @Order(3)
     @AllureId("7")
     void shouldSelectFilling() {
-        MainPage mainPage = page(MainPage.class);
         mainPage.fillingTab.click();
         //TODO: select filling
     }
+
     @Test
+    @Order(4)
     @AllureId("8")
     void shouldCheckActiveFillingTab() throws Exception {
-        MainPage mainPage = page(MainPage.class);
         mainPage.isActiveFillingTab();
     }
+
     @Test
+    @Order(5)
     @AllureId("9")
     void shouldSelectBun() {
-        MainPage mainPage = page(MainPage.class);
-        open(MainPage.URL);
-        mainPage.fillingTab.click();
         mainPage.bunTab.click();
         //TODO: select bun
     }
+
     @Test
+    @Order(6)
     @AllureId("10")
     void shouldCheckActiveBunTab() throws Exception {
-        MainPage mainPage = page(MainPage.class);
         mainPage.isActiveBunTab();
     }
 }
