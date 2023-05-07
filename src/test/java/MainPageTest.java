@@ -21,7 +21,7 @@ public class MainPageTest {
     @AllureId("5")
     void shouldSelectSauce() {
         mainPage.sauceTab.click();
-        //TODO: select sauce
+
     }
 
     @Test
@@ -36,7 +36,7 @@ public class MainPageTest {
     @AllureId("7")
     void shouldSelectFilling() {
         mainPage.fillingTab.click();
-        //TODO: select filling
+
     }
 
     @Test
@@ -51,7 +51,7 @@ public class MainPageTest {
     @AllureId("9")
     void shouldSelectBun() {
         mainPage.bunTab.click();
-        //TODO: select bun
+
     }
 
     @Test
