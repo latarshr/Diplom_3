@@ -78,7 +78,7 @@ public class MainPage {
                 System.out.println("Tab is active");
                 return true;
             }
-            Thread.sleep(500);
+            Thread.sleep(5000);
         }
 
         // Если таб не стал активным в течение заданного времени, то возвращаем false
