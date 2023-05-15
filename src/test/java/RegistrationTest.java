@@ -47,7 +47,7 @@ public class RegistrationTest extends BaseTest {
     }
 
     @Test
-    @AllureId("15")
+    @AllureId("12")
     @DisplayName("Проверка успешной регистрации")
     public void checkSuccessRegistration() {
         regPage.fillInputName(user.getName());
@@ -62,7 +62,7 @@ public class RegistrationTest extends BaseTest {
     }
 
     @Test
-    @AllureId("16")
+    @AllureId("13")
     @DisplayName("Проверка регистрации с невалидным паролем")
     public void checkRegistrationFailed() {
         user.setPassword(RandomStringUtils.randomAlphanumeric(5));
@@ -78,7 +78,7 @@ public class RegistrationTest extends BaseTest {
     }
 
     @Test
-    @AllureId("17")
+    @AllureId("14")
     @DisplayName("Проверка невозможности регистрации с пустым паролем")
     public void checkPasswordCanNotBeNull() {
         user.setPassword("");

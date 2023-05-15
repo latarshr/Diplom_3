@@ -12,7 +12,6 @@ public class BaseTest {
     public void startUp() {
         WebDriverManager.chromedriver().setup();
         Configuration.browser = "chrome";
-        Configuration.startMaximized = true;
         mainPage = open(MainPage.URL, MainPage.class);
     }
 }

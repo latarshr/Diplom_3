@@ -65,23 +65,23 @@ public class MainPage {
         subHeader.scrollIntoView(true);
         System.out.println("Checking tab: " + subHeader.getText());
 
-        // Проверяем, что таб находится в пределах видимости страницы
+// Проверяем, что таб находится в пределах видимости страницы
         if (!tab.isDisplayed()) {
             System.out.println("Tab is not visible");
             return false;
         }
 
-        // Ожидаем, что класс таба содержит "tab_tab_type_current__2BEPc"
+// Ожидаем, что класс таба содержит "tab_tab_type_current__2BEPc"
         long startTime = System.currentTimeMillis();
         while (System.currentTimeMillis() - startTime < 5000) {
-            if (tab.getAttribute("class").contains("tab_tab_type_current__2BEPc")) {
+            if (tab.parent().getAttribute("class").contains("tab_tab_type_current__2BEPc")) {
                 System.out.println("Tab is active");
                 return true;
             }
-            Thread.sleep(5000);
+
         }
 
-        // Если таб не стал активным в течение заданного времени, то возвращаем false
+// Если таб не стал активным в течение заданного времени, то возвращаем false
         System.out.println("Tab is not active");
         return false;
     }

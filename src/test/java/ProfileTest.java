@@ -56,7 +56,7 @@ public class ProfileTest extends BaseTest{
     }
 
     @Test
-    @AllureId("11")
+    @AllureId("8")
     @DisplayName("Проверка входа в аккаунт")
     public void checkEnterProfile() {
         headerPage.clickProfileBtn();
@@ -64,7 +64,7 @@ public class ProfileTest extends BaseTest{
     }
 
     @Test
-    @AllureId("12")
+    @AllureId("9")
     @DisplayName("Проверка перехода из ЛК на страницу Конструктор")
     public void checkEnterConstructorFromProfile() {
         headerPage.clickProfileBtn();
@@ -74,7 +74,7 @@ public class ProfileTest extends BaseTest{
     }
 
     @Test
-    @AllureId("13")
+    @AllureId("10")
     @DisplayName("Проверка перехода из ЛК по клику на лого")
     public void checkEnterConstructorFromProfileClickLogo() {
         headerPage.clickProfileBtn();
@@ -84,7 +84,7 @@ public class ProfileTest extends BaseTest{
     }
 
     @Test
-    @AllureId("14")
+    @AllureId("11")
     @DisplayName("Проверка выхода из ЛК")
     public void checkLogOut() {
         headerPage.clickProfileBtn();
